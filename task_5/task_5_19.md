@@ -80,3 +80,62 @@ SELECT max( total_amount ) FROM bookings;
 выполните запрос. Сравните этот результат с предыдущим, когда мы использовали `UNION ALL`.
 
 ### Решение
+
+**Задание 1**
+
+Добавим столбец `level` с первоначальным значением `= 1`
+
+```sql
+WITH RECURSIVE ranges ( min_sum, max_sum, level )
+AS (
+        VALUES( 0, 100000, 1 ),
+              ( 100000, 200000, 1 ),
+              ( 200000, 300000, 1 )
+    UNION ALL
+    SELECT min_sum + 100000, max_sum + 100000, level + 1
+    FROM ranges
+    WHERE max_sum < ( SELECT max( total_amount ) FROM bookings )
+    )
+SELECT * FROM ranges ORDER BY level, min_sum;
+```
+
+<img src="./assets/ex_19/2025-11-12 085416.jpg" width="700">
+<img src="./assets/ex_19/2025-11-12 085500.jpg" width="250">
+
+**Задание 2**
+
+Заменим `UNION ALL` на `UNION`
+
+```sql
+WITH RECURSIVE ranges ( min_sum, max_sum )
+AS (
+        VALUES( 0, 100000 ),
+              ( 100000, 200000 ),
+              ( 200000, 300000 )
+    UNION
+    SELECT min_sum + 100000, max_sum + 100000
+    FROM ranges
+    WHERE max_sum < ( SELECT max( total_amount ) FROM bookings )
+    )
+SELECT * FROM ranges ORDER BY min_sum;
+```
+
+<img src="./assets/ex_19/2025-11-12 090202.jpg" width="700">
+
+Сравнение результатов:
+- `UNION ALL`:
+   - Сохраняет все строки, включая дубликаты
+   - Показывает полный процесс рекурсии (36 строк)
+   - Полезно для отладки и понимания работы алгоритма
+
+- `UNION`:
+   - Удаляет дубликаты строк
+   - Показывает только уникальные диапазоны (13 строк)
+   - Полезно для финального результата без избыточных данных
+
+Ключевые различия:
+
+`UNION ALL` - быстрее, так как не проверяет дубликаты
+
+`UNION` - убирает дубликаты, но требует дополнительной сортировки и сравнения
+
