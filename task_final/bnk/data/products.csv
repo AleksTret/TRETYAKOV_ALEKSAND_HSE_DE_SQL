@@ -1,0 +1,8 @@
+prod_type,prod_descr,card_type,duration,agr_prod_type,minimal_loan_value,maximal_loan_value,payment_date_freq,early_repayment,restruct,demand_cycles,range_change_pay,creditline,calc_scheme,insurance_scheme
+CURACC,Текущий расчетный счет,D,,CASH,0.00,0.00,,3,N,,,FALSE,,
+DEPO_6M,Депозит на 6 месяцев,D,180,DEPO,10000.00,1000000.00,MONTHLY,2,Y,,,FALSE,INTEREST_ONLY,BASIC
+CONSUMER_LOAN,Потребительский кредит,C,36,POS,10000.00,3000000.00,MONTHLY,1,Y,,,FALSE,ANNUITY,FULL
+MORTGAGE,Ипотечный кредит,C,240,MORG,1000000.00,50000000.00,MONTHLY,1,Y,,,FALSE,DIFFERENTIAL,FULL
+CREDIT_CARD,Кредитная карта,C,60,CARD,10000.00,1000000.00,MONTHLY,1,Y,,,TRUE,REVOLVING,BASIC
+EDU_LOAN,Образовательный кредит,C,60,EDU,50000.00,2000000.00,MONTHLY,1,Y,,,FALSE,GRACE_PERIOD,FULL
+AVTO_LOAN,Автокредит,C,60,AVTO,300000.00,5000000.00,MONTHLY,1,Y,,,FALSE,ANNUITY,FULL
