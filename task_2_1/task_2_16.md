@@ -59,11 +59,10 @@ INSERT INTO roads VALUES
     (1, 6, 'К-1', 120, 'плохое');  -- цикл
 ```    
 <div style="page-break-after: always;"></div>
+
 <img src="./assets/2026-01-26 203028.jpg" width="700"> 
-<div style="page-break-after: always;"></div>
 
 #### Составим запрос для поиск всех путей между двумя точками
-
 ```sql
 WITH RECURSIVE all_paths(point_from, point_to, path, distance, transfers, cycle) AS (
     -- Начальные пути из A
@@ -104,7 +103,6 @@ ORDER BY distance, transfers;
 ```
 <img src="./assets/2026-01-26 203319.jpg" width="700"> 
 <img src="./assets/2026-01-26 203426.jpg" width="700"> 
-<div style="page-break-after: always;"></div>
 
 #### Составим запрос поиска всех путей от начала иерархии
 
