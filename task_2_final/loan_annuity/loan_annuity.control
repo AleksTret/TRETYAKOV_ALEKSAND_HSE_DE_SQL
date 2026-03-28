@@ -1,0 +1,3 @@
+comment = 'Расчёт аннуитетных платежей, графика погашения и ПСК'
+default_version = '1.0'
+relocatable = true
