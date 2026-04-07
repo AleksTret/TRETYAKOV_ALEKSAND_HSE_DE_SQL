@@ -39,6 +39,8 @@
    ```bash
    sudo make install
    ```
+   
+<div style="page-break-after: always;"></div>
 
 4. В psql выполнить:
    ```sql
